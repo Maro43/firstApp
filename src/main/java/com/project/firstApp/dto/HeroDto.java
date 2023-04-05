@@ -11,4 +11,5 @@ public class HeroDto {
     public String getNickname() {
         return nickname;
     }
+
 }

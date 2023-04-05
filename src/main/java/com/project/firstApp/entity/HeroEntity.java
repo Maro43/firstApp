@@ -12,7 +12,20 @@ public class HeroEntity {
 
     private String nickname;
 
+    public HeroEntity() {
+    }
+
+    public HeroEntity(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public String getNickname() {
         return nickname;
     }
+
+
 }

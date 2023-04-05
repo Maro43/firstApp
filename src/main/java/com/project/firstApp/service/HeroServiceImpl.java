@@ -1,14 +1,15 @@
 package com.project.firstApp.service;
 
 import com.project.firstApp.dto.HeroDto;
+import com.project.firstApp.dto.Universe;
 import com.project.firstApp.entity.HeroEntity;
 import com.project.firstApp.repository.HeroRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
-public class HeroServiceImpl implements HeroService{
+public class HeroServiceImpl implements HeroService {
 
     private final HeroRepository heroRepository;
 
@@ -17,8 +18,29 @@ public class HeroServiceImpl implements HeroService{
     }
 
     @Override
+    public HeroDto add(HeroDto heroDto) {
+        HeroEntity save = heroRepository.save(new HeroEntity(heroDto.getNickname()));
+        return new HeroDto(save.getNickname());
+    }
+
+    @Override
+    public HeroDto update(HeroDto heroDto) {
+        return null;
+    }
+
+    @Override
     public HeroDto get(Long id) {
         HeroEntity heroEntity = heroRepository.findById(id).orElseThrow();
         return new HeroDto(heroEntity.getNickname());
+    }
+
+    @Override
+    public HeroDto delete(Long id) {
+        return null;
+    }
+
+    @Override
+    public List<HeroDto> find(Universe universe) {
+        return null;
     }
 }
