@@ -2,10 +2,7 @@ package com.project.firstApp.controller;
 
 import com.project.firstApp.dto.HeroDto;
 import com.project.firstApp.service.HeroService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/hero")
@@ -25,6 +22,16 @@ public class HeroController {
     @PostMapping
     public HeroDto add(HeroDto heroDto) {
         return heroService.add(heroDto);
+    }
+
+    @PutMapping
+    public HeroDto update(HeroDto heroDto) {
+        return heroService.update(heroDto);
+    }
+
+    @DeleteMapping
+    public HeroDto delete(Long id) {
+        return heroService.delete(id);
     }
 
 }
