@@ -20,21 +20,22 @@ public class HeroServiceImpl implements HeroService {
     @Override
     public HeroDto get(Long id) {
         HeroEntity heroEntity = heroRepository.findById(id).orElseThrow();
-        return new HeroDto(heroEntity.getNickname());
+        return new HeroDto(heroEntity.getId(), heroEntity.getNickname(), heroEntity.getUniverse());
     }
 
     @Override
     public HeroDto add(HeroDto heroDto) {
         HeroEntity save = heroRepository.save(new HeroEntity(heroDto.getNickname(),heroDto.getUniverse()));
-        return new HeroDto(save.getNickname());
+        return new HeroDto(save.getId(), save.getNickname(), save.getUniverse());
     }
 
     @Override
     public HeroDto update(HeroDto heroDto) {
         HeroEntity heroEntity = heroRepository.findById(heroDto.getId()).orElseThrow();
         heroEntity.setNickname(heroDto.getNickname());
+        heroEntity.setUniverse(heroDto.getUniverse());
         heroRepository.save(heroEntity);
-        return new HeroDto(heroEntity.getNickname());
+        return new HeroDto(heroEntity.getId(), heroEntity.getNickname(), heroEntity.getUniverse());
     }
 
     @Override
@@ -48,4 +49,5 @@ public class HeroServiceImpl implements HeroService {
     public List<HeroDto> find(Universe universe) {
         return null;
     }
+
 }

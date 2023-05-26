@@ -9,6 +9,10 @@ public class HeroDto {
     public HeroDto() {
     }
 
+    public HeroDto(String nickname) {
+        this.nickname = nickname;
+    }
+
     public HeroDto(Long id, String nickname, Universe universe) {
         this.id = id;
         this.nickname = nickname;
@@ -37,9 +41,5 @@ public class HeroDto {
 
     public void setUniverse(Universe universe) {
         this.universe = universe;
-    }
-
-    public HeroDto(String nickname) {
-        this.nickname = nickname;
     }
 }
